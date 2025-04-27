@@ -1,0 +1,172 @@
+Ex.No: 3
+DESIGN AN APPLICATION THAT USES LAYOUT MANAGERS AND EVENT LISTENERS
+
+Aim:
+To design an application that uses layout managers and event listeners.
+
+Algorithm:
+Step 1:
+- Open Eclipse or Android Studio and create a new Android project.
+
+Step 2:
+- Give the project name and select next.
+
+Step 3:
+- Choose the Android version (example: Android 2.2) and select next.
+
+Step 4:
+- Enter the package name (must be two words separated by dot) and click finish.
+
+Step 5:
+- In the package explorer, go to the res folder → layout → double click main.xml file to design UI.
+
+activity_main.xml:
+-------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:text="Details Form"
+            android:textSize="25sp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="200dp"
+        android:columnCount="2"
+        android:rowCount="3">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reg.No"
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dept"
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:gravity="center"/>
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:spinnerMode="dropdown"/>
+    </GridLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="150dp"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>
+
+-------------------------------------------------
+
+MainActivity.java:
+-------------------------------------------------
+package com.example.event;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText e1, e2;
+    Button bt;
+    Spinner s;
+
+    String[] dept_array = {"MCA", "ECE", "IT", "Mech", "Civil"};
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        e1 = findViewById(R.id.editText);
+        e2 = findViewById(R.id.editText2);
+        bt = findViewById(R.id.button);
+        s = findViewById(R.id.spinner);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, dept_array);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        s.setAdapter(adapter);
+
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = e1.getText().toString().trim();
+                String reg = e2.getText().toString().trim();
+                String dept = s.getSelectedItem().toString();
+
+                Intent i = new Intent(MainActivity.this, SecondActivity.class);
+                i.putExtra("name_key", name);
+                i.putExtra("reg_key", reg);
+                i.putExtra("dept_key", dept);
+
+                startActivity(i);
+            }
+        });
+    }
+}
+-------------------------------------------------
+
+Result:
+The application that uses layout managers and event listeners was successfully designed and executed.

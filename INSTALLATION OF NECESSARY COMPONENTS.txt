@@ -1,0 +1,34 @@
+Ex.No: 1
+INSTALLATION OF NECESSARY COMPONENTS AND SOFTWARE
+
+Aim:
+To install and set up the necessary components and software required for Android application development in Android Studio.
+
+Algorithm:
+Step 1:
+- Go to the official Android Studio website (https://developer.android.com/studio).
+- Download the latest version of Android Studio for your operating system.
+- Install by following the setup instructions.
+
+Step 2:
+- Install JDK 11 or later.
+- Download from Oracle JDK (https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) or OpenJDK.
+- Set up JAVA_HOME environment variable if needed.
+
+Step 3:
+- Open Android Studio → Go to SDK Manager (File → Settings → Appearance & Behavior → System Settings → Android SDK).
+- Install necessary SDK Platforms (like Android API 33 or later).
+- Install SDK Tools like Android Emulator, Build Tools, and Google Play Services.
+
+Step 4:
+- Open AVD Manager (Tools → Device Manager).
+- Create Virtual Device (example: Pixel 6).
+- Choose a system image and finish the setup.
+
+Step 5:
+- Create a new Android Project (File → New → New Project).
+- Choose Empty Activity → Language: Java → Finish.
+- Click Run to build and deploy the project on an emulator or physical device.
+
+Result:
+The necessary components and software required for Android application development were installed and set up successfully.
